@@ -1008,3 +1008,22 @@ nav.navbar.bootsnav .navbar-toggle i{color: rgb(31, 134, 200);}
   color: white;
   text-decoration: none;
 }
+
+.btn-group-xs .btn {
+  padding: 2px 8px;
+  font-size: 12px;
+}
+
+.inline-form {
+  display: inline;
+}
+
+.btn-success {
+    background-color: #107468 !important;
+    border-color: #107468 !important;
+}
+
+.btn-danger {
+    background-color: #761f05 !important;
+    border-color: #761f05 !important;
+}

@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
   before_action :set_cart
+  before_action :set_cart_item, only: [ :increment_item, :decrement_item ]
+  allow_unauthenticated_access
 
     def show
       @items = @cart.cart_items.includes(:product)
@@ -24,6 +26,22 @@ class CartsController < ApplicationController
       redirect_to cart_path
     end
 
+    def increment_item
+      @cart_item.quantity += 1
+      @cart_item.save
+      redirect_to cart_path
+    end
+
+    def decrement_item
+      if @cart_item.quantity > 1
+        @cart_item.quantity -= 1
+        @cart_item.save
+      else
+        @cart_item.delete
+      end
+      redirect_to cart_path
+    end
+
     private
 
     def set_cart
@@ -31,5 +49,9 @@ class CartsController < ApplicationController
       rescue ActiveRecord::RecordNotFound
         @cart = Cart.create
          session[:cart_id] = @cart.id
+    end
+
+    def set_cart_item
+      @cart_item = CartItem.find(params[:id])
     end
 end

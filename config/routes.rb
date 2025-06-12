@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   resources :products
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -17,5 +19,9 @@ Rails.application.routes.draw do
     post :add_item
     get :confirm
     get :delete_current
+    member do
+      post "increment_item/:id", to: "carts#increment_item", as: :increment_item
+      post "decrement_item/:id", to: "carts#decrement_item", as: :decrement_item
+    end
   end
 end

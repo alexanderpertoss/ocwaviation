@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <h3>Carrito de compras</h3>
     <div class="col-lg-7">
+      <h3>Carrito de compras</h3>
     <% if @items.any? %>
       <div class="table-responsive">
         <table class="table table-striped">
@@ -9,6 +9,7 @@
             <th>Producto</th>
             <th>Precio unitario</th>
             <th>Cantidad</th>
+            
             <th>Total</th>
           </tr>
           
@@ -21,7 +22,12 @@
                 Bs. <%= item.product.price %>
               </td>
               <td>
-                <%= item.quantity %>
+                <div class="btn-group btn-group-xs" role="group">
+                  <span class="btn btn-default disabled"><%= item.quantity %></span>&nbsp;
+                  <%= button_to "+", increment_item_cart_path(@cart, id: item.id), method: :post, class: "btn btn-success", form: { class: "inline-form" } %>
+                  <%= button_to "-", decrement_item_cart_path(@cart, id: item.id), method: :post, class: "btn btn-danger", form: { class: "inline-form" } %>
+                
+                </div>
               </td>
               <td>
                 Bs. <%= item.quantity * item.product.price %>
@@ -37,6 +43,14 @@
     </div>
     <div class="col-lg-5">
 
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <b>INFORMACIÓN</b>
+        </div>
+        <div class="panel-body">
+          El carrito de compras le permite agregar productos para enviarlos por un mensaje de WhatsApp al equipo de ventas de OCWAviationSIMS. Los pagos y detalles de envío se coordinan directamente por WhatsApp.
+        </div>
+      </div>
 
       <%= link_to "https://wa.me/59177498233?text=#{ERB::Util.url_encode(@items_string)}", target: "_blank", class: "cart-confirmation-btn" do %>
         <i class="fab fa-whatsapp"></i> Confirmar pedido por WhatsApp

@@ -46,11 +46,25 @@
                   <!-- Collect the nav links, forms, and other content for toggling -->
                   <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
                       <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                        <% if current_page?(cart_path) %>
+                          <li><%= link_to "Inicio", "/", data: { turbo: false } %></li>
+                          <li><%= link_to "¿Cómo funciona?", "/#works", data: { turbo: false } %></li>
+                          <li><%= link_to "PRODUCTOS", "/#explore", data: { turbo: false } %></li>
+                          <li><%= link_to "Reseñas", "/#blog", data: { turbo: false } %></li>
+                          <li><%= link_to "Contacto", "/#contact", data: { turbo: false } %></li>
+                          <li><%= link_to "Productos", products_path if authenticated? %></li>
+                          <li><%= button_to "Log out", session_path, method: :delete if authenticated? %></li>
+                          
+
+                        <% else %>
                           <li class="scroll"><%= link_to "Inicio", "#home" %></li>
                           <li class="scroll"><%= link_to "¿Cómo funciona?", "#works" %></li>
                           <li class="scroll"><a href="#explore">PRODUCTOS</a></li>
                           <li class="scroll"><a href="#blog">RESEÑAS</a></li>
                           <li class="scroll"><a href="#contact">CONTACTO</a></li>
+                          <li><%= link_to "Productos", products_path if authenticated? %></li>
+                          <li><%= button_to "Cerrar Sesión", session_path, method: :delete if authenticated? %></li>
+                        <% end %>
                       </ul><!--/.nav -->
                   </div><!-- /.navbar-collapse -->
               </div><!--/.container-->
