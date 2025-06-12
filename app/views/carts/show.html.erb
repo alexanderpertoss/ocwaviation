@@ -1,0 +1,47 @@
+
+
+<div class="container">
+  <div class="row">
+    <h2>Tu carrito OCW Aviation</h2>
+    <% if @items.any? %>
+      <table>
+        <tr>
+          <th>Producto</th>
+          <th>Precio unitario</th>
+          <th>Cantidad</th>
+          <th>Total</th>
+        </tr>
+        
+          <% @items.each do |item| %>
+          <tr>
+            <td>
+              <%= item.product.name %>
+            </td>  
+            <td>
+              Bs. <%= item.product.price %>
+            </td>
+            <td>
+              <%= item.quantity %>
+            </td>
+            <td>
+              Bs. <%= item.quantity * item.product.price %>
+            </td>
+          </tr>
+          <% end %>
+      </table>
+
+      Precio total: Bs. <%= @cart.total_price %>
+      
+    <% else %>
+      <p>Your cart is empty.</p>
+    <% end %><br>
+
+    <%= link_to "Confirmar pedido por WhatsApp", 
+      "https://wa.me/59177498233?text=#{ERB::Util.url_encode(@items_string)}", 
+      target: "_blank" %>
+    <br>
+    <%= link_to "Volver", "/" %>
+    
+  </div>
+</div>
+
