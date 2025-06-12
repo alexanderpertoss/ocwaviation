@@ -1,12 +1,13 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
 import "controllers"
-import "./bootsnav"
-import "./bootstrap.min"
-import "./feather.min"
-import "./jquery.counterup.min"
-import "./slick.min"
-import "./waypoints.min"
+import "jquery"
+import "bootsnav"
+import "bootstrap.min"
+import "feather.min"
+import "jquery.counterup"
+import "slick.min"
+import "waypoints.min"
 
 $(document).ready(function(){
 	"use strict";

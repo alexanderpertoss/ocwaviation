@@ -19,6 +19,7 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <%= javascript_importmap_tags %>
   </head>
 
@@ -36,7 +37,8 @@
                       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                           <i class="fa fa-bars"></i>
                       </button>
-                      <a class="navbar-brand" href="index.html">OCW<span>AVIATION</span></a>
+                      <a class="navbar-brand" href="/" data-turbo="false">OCWAVIATION</a>
+
 
                   </div><!--/.navbar-header-->
                   <!-- End Header Navigation -->
@@ -44,10 +46,9 @@
                   <!-- Collect the nav links, forms, and other content for toggling -->
                   <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
                       <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                          <li class=" scroll active"><a href="#home">INICIO</a></li>
-                          <li class="scroll"><a href="#works">¿QUÉ OFRECEMOS?</a></li>
-                          <li class="scroll"><a href="#explore"></a></li>
-                          <li class="scroll"><a href="#reviews">PRODUCTOS</a></li>
+                          <li class="scroll"><%= link_to "Inicio", "#home" %></li>
+                          <li class="scroll"><%= link_to "¿Cómo funciona?", "#works" %></li>
+                          <li class="scroll"><a href="#explore">PRODUCTOS</a></li>
                           <li class="scroll"><a href="#blog">RESEÑAS</a></li>
                           <li class="scroll"><a href="#contact">CONTACTO</a></li>
                       </ul><!--/.nav -->
@@ -60,7 +61,42 @@
 
     </section><!-- /.top-area-->
     <!-- top-area End -->
+
+    <%= link_to cart_path, class: "floating-cart-btn" do %>
+      <i class="fa-solid fa-cart-shopping"></i> Ver carrito
+    <% end %>
+
     <%= yield %>
+    <!--footer start-->
+		<footer id="footer"  class="footer">
+			<div class="container">
+				<div class="hm-footer-copyright">
+					<div class="row">
+						<div class="col-sm-5">
+							<p style="font-size: 11px;">
+								&copy;copyright. <a href="https://www.themesine.com/" style="font-size: 11px;">themesine</a>
+							</p><!--/p-->
+						</div>
+						<div class="col-sm-7">
+							<div class="footer-social">
+								<span style="font-size: 11px;"><i class="fa fa-phone"> +1  (222) 777 8888</i></span>
+								<a href="#"><i class="fa-brands fa-facebook"></i></a>	
+								
+							</div>
+						</div>
+					</div>
+					
+				</div><!--/.hm-footer-copyright-->
+			</div><!--/.container-->
+
+			<div id="scroll-Top">
+				<div class="return-to-top">
+					<i class="fa fa-angle-up " id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+				</div>
+				
+			</div><!--/.scroll-Top-->
+			
+    </footer><!--/.footer-->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!--modernizr.min.js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>

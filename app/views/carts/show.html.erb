@@ -1,46 +1,56 @@
-
-
 <div class="container">
   <div class="row">
-    <h2>Tu carrito OCW Aviation</h2>
+    <h3>Carrito de compras</h3>
+    <div class="col-lg-7">
     <% if @items.any? %>
-      <table>
-        <tr>
-          <th>Producto</th>
-          <th>Precio unitario</th>
-          <th>Cantidad</th>
-          <th>Total</th>
-        </tr>
-        
-          <% @items.each do |item| %>
+      <div class="table-responsive">
+        <table class="table table-striped">
           <tr>
-            <td>
-              <%= item.product.name %>
-            </td>  
-            <td>
-              Bs. <%= item.product.price %>
-            </td>
-            <td>
-              <%= item.quantity %>
-            </td>
-            <td>
-              Bs. <%= item.quantity * item.product.price %>
-            </td>
+            <th>Producto</th>
+            <th>Precio unitario</th>
+            <th>Cantidad</th>
+            <th>Total</th>
           </tr>
-          <% end %>
-      </table>
+          
+            <% @items.each do |item| %>
+            <tr>
+              <td>
+                <%= item.product.name %>
+              </td>  
+              <td>
+                Bs. <%= item.product.price %>
+              </td>
+              <td>
+                <%= item.quantity %>
+              </td>
+              <td>
+                Bs. <%= item.quantity * item.product.price %>
+              </td>
+            </tr>
+            <% end %>
+            <tr>
+              <td colspan="3" class="text-center"><b>PRECIO FINAL</b></td>
+              <td><b>Bs. <%= @cart.total_price %></b></td>
+            </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-lg-5">
 
-      Precio total: Bs. <%= @cart.total_price %>
+
+      <%= link_to "https://wa.me/59177498233?text=#{ERB::Util.url_encode(@items_string)}", target: "_blank", class: "cart-confirmation-btn" do %>
+        <i class="fab fa-whatsapp"></i> Confirmar pedido por WhatsApp
+      <% end %>
+      &nbsp;
+      <%= link_to delete_current_cart_path, method: :get, class: "cart-cancellation-btn" do %>
+        <i class="fa-solid fa-trash"></i> Limpiar carrito
+      <% end %>
       
+    </div>
     <% else %>
-      <p>Your cart is empty.</p>
+      <p>Tu carrito está vacío. Encuentra nuestros productos <%= link_to "aquí", "/#works", data: { turbo: false } %>.</p>
     <% end %><br>
 
-    <%= link_to "Confirmar pedido por WhatsApp", 
-      "https://wa.me/59177498233?text=#{ERB::Util.url_encode(@items_string)}", 
-      target: "_blank" %>
-    <br>
-    <%= link_to "Volver", "/" %>
     
   </div>
 </div>

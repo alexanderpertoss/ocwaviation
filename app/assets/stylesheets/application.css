@@ -58,16 +58,6 @@ body{
     margin:0 auto;
 	overflow-x:hidden;
 }
-
-a,a:hover,a:active,a:focus {
-	display:inline-block;
-	text-decoration:none;
-	color: #343a3f;
-	font-size:16px;
-	padding:0;
-    font-weight: 500;
-    text-transform: capitalize;
-}
 h1,h2,h3,h4,h5,h6 { 
 	margin: 0;
 	color:#343a3f;
@@ -854,6 +844,16 @@ nav.navbar.bootsnav .navbar-toggle i{color: rgb(31, 134, 200);}
 /*-------------------------------------
         12. Footer
 --------------------------------------*/
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #f8f9fa; /* or your footer color */
+    text-align: center;
+    z-index: 1000; /* stays above content */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
 .footer-menu {padding: 45px 0;}
 .footer-menu .navbar-header{padding:0;}
 .footer-menu .navbar-header a.navbar-brand,.footer-menu.footer-menu .navbar-header a.navbar-brand:hover,.footer-menu .navbar-header a.navbar-brand:focus{
@@ -874,7 +874,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: rgb(31, 134, 200);}
 }
 .footer-menu ul.footer-menu-item li a:hover{color: #f43032;}
 .hm-footer-copyright {
-    padding: 40px 0;
+    padding: 18px 0;
     border-top: 1px solid #e1e5eb;
 }
 .hm-footer-copyright p,.hm-footer-copyright p a {
@@ -883,7 +883,9 @@ nav.navbar.bootsnav .navbar-toggle i{color: rgb(31, 134, 200);}
     font-weight: 400;
     text-transform: capitalize;
 }
-.footer-social {text-align: right;}
+.footer-social {
+    text-align: right;
+}
 .footer-social .fa-phone:before {
     position: relative;
     top: 2px;
@@ -958,4 +960,51 @@ nav.navbar.bootsnav .navbar-toggle i{color: rgb(31, 134, 200);}
     0%   {bottom:0px;}
     100%  {bottom:7px;}
 }
-/*========================Thank you=================
+/*========================Thank you=================*/
+
+.cart-confirmation-btn {
+  background-color: #128C7E; /* Tailwind's blue-500: modern, vibrant */
+  color: white;
+  padding: 1rem 1.2rem;
+  border-radius: 50px;
+}
+
+.cart-confirmation-btn:hover {
+    background-color: #107468;
+    color: white;
+    text-decoration: none;
+}
+
+.cart-cancellation-btn {
+  background-color: #9b2805; /* Tailwind's blue-500: modern, vibrant */
+  color: white;
+  padding: 1rem 1.2rem;
+  border-radius: 50px;
+}
+
+.cart-cancellation-btn:hover {
+    background-color: #761f05;
+    color: white;
+    text-decoration: none;
+}
+
+.floating-cart-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #3b82f6; /* Modern blue */
+  color: white;
+  padding: 10px 16px;
+  font-size: 16px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1050; /* Above modals/footers */
+  transition: background-color 0.2s ease;
+}
+
+.floating-cart-btn:hover {
+  background-color: #2563eb;
+  color: white;
+  text-decoration: none;
+}
