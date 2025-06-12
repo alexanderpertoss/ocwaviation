@@ -1,16 +1,35 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
 
-<% content_for :title, "Products" %>
+    <p style="color: green"><%= notice %></p>
 
-<h1>Products</h1>
+    <% content_for :title, "Products" %>
 
-<div id="products">
-  <% @products.each do |product| %>
-    <%= render product %>
-    <p>
-      <%= link_to "Show this product", product %>
-    </p>
-  <% end %>
+    <h1>Productos</h1>
+
+    <%= link_to "Nuevo producto", new_product_path, class: "btn btn-success" %>
+    
+    <div id="products table-responsive">
+      <table class="table table-striped">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th colspan="2">Acciones</th>
+        </tr>
+        
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.description %></td>
+            <td>Bs. <%= product.price %></td>
+            <td><%= link_to "Editar producto", edit_product_path(product), class: "btn btn-success" %></td>
+            <td><%= button_to "Borrar el producto", product, method: :delete, class: "btn btn-danger" %></td>
+          </tr>
+        <% end %>
+        
+      </table>
+      
+    </div>
+
+    
 </div>
-
-<%= link_to "New product", new_product_path %>
