@@ -9,6 +9,7 @@ import "jquery.counterup"
 import "slick.min"
 import "waypoints.min"
 
+
 $(document).ready(function(){
 	"use strict";
     

@@ -18,7 +18,7 @@
           <td><%= category.name %></td>
           <td><%= category.description %></td>
           <td><%= link_to "Editar categoría", edit_category_path(category), class: "btn btn-success" %></td>
-          <td><%= button_to "Borrar categoría", category, method: :delete, class: "btn btn-danger" %></td>
+          <td><%= button_to "Borrar categoría", category, method: :delete, class: "btn btn-danger", data: { confirm: "¿Estás seguro de que deseas borrar esta categoría?" } %></td>
         </tr>
       <% end %>
       
