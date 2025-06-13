@@ -20,6 +20,7 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" %>
     <%= javascript_importmap_tags %>
   </head>
 
@@ -53,6 +54,7 @@
                           <li><%= link_to "Reseñas", "/#blog", data: { turbo: false } %></li>
                           <li><%= link_to "Contacto", "/#contact", data: { turbo: false } %></li>
                           <li><%= link_to "Productos", products_path if authenticated? %></li>
+                          <li><%= link_to "Reseñas", reviews_path if authenticated? %></li>
                           <li><%= button_to "Log out", session_path, method: :delete if authenticated? %></li>
                           
 
@@ -63,6 +65,7 @@
                           <li class="scroll"><a href="#blog">RESEÑAS</a></li>
                           <li class="scroll"><a href="#contact">CONTACTO</a></li>
                           <li><%= link_to "Productos", products_path if authenticated? %></li>
+                          <li><%= link_to "Reseñas", reviews_path if authenticated? %></li>
                           <li><%= button_to "Cerrar Sesión", session_path, method: :delete if authenticated? %></li>
                         <% end %>
                       </ul><!--/.nav -->
@@ -115,7 +118,6 @@
     <!--modernizr.min.js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    
-
+    <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js", defer: true %>
   </body>
 </html>

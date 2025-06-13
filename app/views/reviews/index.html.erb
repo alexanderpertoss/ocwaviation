@@ -1,0 +1,28 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+  <% content_for :title, "Reviews" %>
+
+  <h1>Reseñas</h1>
+
+  <%= link_to "Nueva reseña", new_review_path, class: "btn btn-success" %>
+  <div id="reviews table-responsive">
+      <table class="table table-striped">
+        <tr>
+          <th>Nombre</th>
+          <th>Reseña</th>
+          <th colspan="2">Acciones</th>
+        </tr>
+        
+        <% @reviews.each do |review| %>
+          <tr>
+            <td><%= review.name %></td>
+            <td><%= review.description %></td>
+            <td><%= link_to "Editar reseña", edit_review_path(review), class: "btn btn-success" %></td>
+            <td><%= button_to "Borrar reseña", review, method: :delete, class: "btn btn-danger" %></td>
+          </tr>
+        <% end %>
+        
+      </table>
+    </div>
+</div>

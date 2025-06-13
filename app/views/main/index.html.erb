@@ -139,8 +139,28 @@
 							<div class=" col-md-4 col-sm-6">
 								<div class="single-explore-item">
 									<div class="single-explore-img">
-										<%= image_tag("img.jpg", alt: "explore image") %>
-										
+										<div id="product-carousel-<%= product.id %>" class="carousel slide single-explore-img" data-ride="carousel">
+				
+
+											<!-- Wrapper for slides -->
+											<div class="carousel-inner">
+												<% product.images.each_with_index do |image, index| %>
+												<div class="item <%= 'active' if index == 0 %>">
+													<%= link_to url_for(image), class: "glightbox", data: { gallery: "product-#{product.id}" } do %>
+														<%= image_tag image, alt: "Product Image", class: "img-responsive" %>
+													<% end %>
+												</div>
+												<% end %>
+											</div>
+
+											<!-- Controls -->
+											<a class="left carousel-control" href="#product-carousel-<%= product.id %>" data-slide="prev">
+												<span class="fa-solid fa-arrow-left"></span>
+											</a>
+											<a class="right carousel-control" href="#product-carousel-<%= product.id %>" data-slide="next">
+												<span class="fa-solid fa-arrow-right"></span>
+											</a>
+										</div>
 									</div>
 									<div class="single-explore-txt bg-theme-1">
 										<h2><a href="#"><%= product.name %></a></h2>
@@ -159,9 +179,11 @@
 										<div class="explore-open-close-part">
 											<div class="row">
 												<div class="col-sm-5">
-													    <%= button_to "Agregar a carrito", add_item_cart_path(product_id: product.id), method: :post %>
-
-
+													<% if @cart.includes_product?(product) %>
+														<%= button_to "Agregado al carrito", cart_path, method: :get, class: "btn btn-success" %>
+													<% else %>
+														<%= button_to "Agregar a carrito", add_item_cart_path(product_id: product.id), method: :post, class: "btn btn-default" %>
+													<% end %>
 												</div>
 											</div>
 										</div>
@@ -227,53 +249,31 @@
 		<section id="blog" class="blog" >
 			<div class="container">
 				<div class="section-header">
-					<h2>news and articles</h2>
-					<p>Always upto date with our latest News and Articles </p>
+					<h2>Reseñas de algunos de nuestros clientes</h2>
 				</div><!--/.section-header-->
 				<div class="blog-content">
 					<div class="row">
-						<div class="col-md-4 col-sm-6">
-							<div class="single-blog-item">
-								<div class="single-blog-item-img">
-									<img src="assets/images/blog/b1.jpg" alt="blog image">
-								</div>
-								<div class="single-blog-item-txt">
-									<h2><a href="#">How to find your Desired Place more quickly</a></h2>
-									<h4>posted <span>by</span> <a href="#">admin</a> march 2018</h4>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur de adipisicing elit, sed do eiusmod tempore incididunt ut labore et dolore magna.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-6">
-							<div class="single-blog-item">
-								<div class="single-blog-item-img">
-									<img src="assets/images/blog/b2.jpg" alt="blog image">
-								</div>
-								<div class="single-blog-item-txt">
-									<h2><a href="#">How to find your Desired Place more quickly</a></h2>
-									<h4>posted <span>by</span> <a href="#">admin</a> march 2018</h4>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur de adipisicing elit, sed do eiusmod tempore incididunt ut labore et dolore magna.
-									</p>
+						<% @reviews.each do |review| %>
+							<div class="col-md-4 col-sm-6">
+								<div class="single-blog-item">
+									<div class="single-blog-item-img">
+										<center><i class="fa-solid fa-user" style="font-size: 500%;"></i></center>
+									</div>
+									<div class="single-blog-item-txt">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<p>
+											<%= review.description %>
+										</p>
+										<h4>Por <%= review.name %></h4>
+										
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-md-4 col-sm-6">
-							<div class="single-blog-item">
-								<div class="single-blog-item-img">
-									<img src="assets/images/blog/b3.jpg" alt="blog image">
-								</div>
-								<div class="single-blog-item-txt">
-									<h2><a href="#">How to find your Desired Place more quickly</a></h2>
-									<h4>posted <span>by</span> <a href="#">admin</a> march 2018</h4>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur de adipisicing elit, sed do eiusmod tempore incididunt ut labore et dolore magna.
-									</p>
-								</div>
-							</div>
-						</div>
+						<% end %>
 					</div>
 				</div>
 			</div><!--/.container-->
@@ -286,19 +286,18 @@
 			<div class="container">
 				<div class="subscribe-title text-center">
 					<h2>
-						do you want to add your business listing with us?
+						¿Tienes dudas? Envíanos un mensaje a WhatsApp y nos comunicaremos inmediatamente.
 					</h2>
-					<p>
-						Listrace offer you to list your business with us and we very much able to promote your Business.
-					</p>
+					
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="subscription-input-group">
 							<form action="#">
-								<input type="email" class="subscription-input-form" placeholder="Enter your email here">
-								<button class="appsLand-btn subscribe-btn" onclick="window.location.href='#'">
-									creat account
+								<input type="text" id="whatsapp-message" class="subscription-input-form" placeholder="Envíanos tu mensaje">
+
+								<button class="appsLand-btn subscribe-btn" onclick="sendWhatsAppMessage()">
+								<i class="fab fa-whatsapp"></i> Enviar mensaje
 								</button>
 							</form>
 						</div>
@@ -308,5 +307,22 @@
 
 		</section><!--/subscription-->	
 		<!--subscription end -->
+
+
+<script>
+function sendWhatsAppMessage() {
+	var message = document.getElementById('whatsapp-message').value;
+	var phone = "59177498233";
+	var url = "https://wa.me/" + phone + "?text=Hola, OCWAviationSIMS. " + encodeURIComponent(message);
+
+	window.open(url, "_blank");
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const lightbox = GLightbox({
+      selector: '.glightbox'
+    });
+  });
+</script>
 
 		

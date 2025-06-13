@@ -811,7 +811,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: rgb(31, 134, 200);}
     position: absolute;
     top: 0;
     right: 0;
-    background: rgb(31, 134, 200);
+    background: #2563eb;
     display: inline-block;
     width: 180px;
     height: 60px;
@@ -837,7 +837,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: rgb(31, 134, 200);}
 }
 .appsLand-btn:hover {
     box-shadow:0 5px 10px rgba(71,71,71,.4);
-    background: #f43032;
+    background: #2563eb;
 }
 /*appsLand-btn*/
 
@@ -1023,7 +1023,25 @@ nav.navbar.bootsnav .navbar-toggle i{color: rgb(31, 134, 200);}
     border-color: #107468 !important;
 }
 
+.btn-default {
+    background-color: #2563eb !important;
+    border-color: #2563eb !important;
+    color: white !important;
+}
+
 .btn-danger {
     background-color: #761f05 !important;
     border-color: #761f05 !important;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+  top: 60%;
+  transform: translateY(-50%);
+  height: auto;
+}
+
+.carousel-control span {
+  font-size: 30px;
+  color: #fff;
 }
