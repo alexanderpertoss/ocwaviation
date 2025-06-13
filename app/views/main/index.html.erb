@@ -9,8 +9,8 @@
 		<section id="home" class="welcome-hero">
 			<div class="container">
 				<div class="welcome-hero-txt">
-					<h2>Los mejores simuladores de vuelo en Bolivia</h2>
-					<p>Construimos tu simulador a medida, según tus requerimientos.</p>
+					<h2><%= Information.first.text1 %></h2>
+					<p><%= Information.first.text2 %></p>
 				</div>
 			</div>
 
@@ -26,36 +26,44 @@
 						<li>
 							<div class="single-list-topics-content">
 								<div class="single-list-topics-icon">
-									<i class="flaticon-restaurant"></i>
+									<i class="fa-solid fa-shop" style="font-size: 200%; color: black;"></i>
 								</div>
-								<h2><a href="#">Taller</a></h2>
+								<h2>
+									<li class="scroll"><a href="#explore" style="text-decoration: none; color: black;">Taller</a></li>
+								</h2>
 								<p>Armado de simuladores</p>
 							</div>
 						</li>
 						<li>
 							<div class="single-list-topics-content">
 								<div class="single-list-topics-icon">
-									<i class="flaticon-travel"></i>
+									<i class="fa-solid fa-shop" style="font-size: 200%; color: black;"></i>
 								</div>
-								<h2><a href="#">Envíos</a></h2>
+								<h2>
+									<li class="scroll"><a href="#explore" style="text-decoration: none; color: black;">Envíos</a></li>
+								</h2>
 								<p>A todo el país</p>
 							</div>
 						</li>
 						<li>
 							<div class="single-list-topics-content">
 								<div class="single-list-topics-icon">
-									<i class="flaticon-building"></i>
+									<i class="fa-solid fa-shop" style="font-size: 200%; color: black;"></i>
 								</div>
-								<h2><a href="#">A medida</a></h2>
+								<h2>
+									<li class="scroll"><a href="#explore" style="text-decoration: none; color: black;">Impresión 3D</a></li>
+								</h2>
 								<p>Trabajo personalizado</p>
 							</div>
 						</li>
 						<li>
 							<div class="single-list-topics-content">
 								<div class="single-list-topics-icon">
-									<i class="flaticon-pills"></i>
+									<i class="fa-solid fa-shop" style="font-size: 200%; color: black;"></i>
 								</div>
-								<h2><a href="#">Garantía</a></h2>
+								<h2>
+									<li class="scroll"><a href="#explore" style="text-decoration: none; color: black;">Soporte</a></li>
+								</h2>
 								<p>Excelencia de servicio</p>
 							</div>
 						</li>
@@ -72,7 +80,7 @@
 			<div class="container">
 				<div class="section-header">
 					<h2>¿Cómo funciona?</h2>
-					<p>Somos una empresa que diseña y produce simuladores de vuelo a medida. Nos enfocamos en la excelencia y pesonalización, brindando un servicio único en el mercado boliviano.</p>
+					<p><%= Information.first.text3 %></p>
 				</div><!--/.section-header-->
 				<div class="works-content">
 					<div class="row">
@@ -81,13 +89,10 @@
 								<div class="single-how-works-icon">
 									<i class="flaticon-lightbulb-idea"></i>
 								</div>
-								<h2><a href="#">choose <span> what to</span> do</a></h2>
+								<h2><a>Diseñamos el equipo</a></h2>
 								<p>
-									Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmod tempor incididunt ut laboremagna aliqua. 
+									<%= Information.first.text4 %> 
 								</p>
-								<button class="welcome-hero-btn how-work-btn" onclick="window.location.href='#'">
-									read more
-								</button>
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-6">
@@ -95,13 +100,11 @@
 								<div class="single-how-works-icon">
 									<i class="flaticon-networking"></i>
 								</div>
-								<h2><a href="#">find <span> what you want</span></a></h2>
+								<h2><a>Nos adaptamos a tus requerimientos</a></h2>
 								<p>
-									Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmod tempor incididunt ut laboremagna aliqua. 
+									<%= Information.first.text5 %>
 								</p>
-								<button class="welcome-hero-btn how-work-btn" onclick="window.location.href='#'">
-									read more
-								</button>
+								
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-6">
@@ -109,13 +112,10 @@
 								<div class="single-how-works-icon">
 									<i class="flaticon-location-on-road"></i>
 								</div>
-								<h2><a href="#">explore <span> amazing</span> place</a></h2>
+								<h2><a>Envíos a todo el país</a></h2>
 								<p>
-									Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmod tempor incididunt ut laboremagna aliqua. 
+									<%= Information.first.text6 %>
 								</p>
-								<button class="welcome-hero-btn how-work-btn" onclick="window.location.href='#'">
-									read more
-								</button>
 							</div>
 						</div>
 					</div>
@@ -130,7 +130,7 @@
 			<div class="container">
 				<div class="section-header">
 					<h2>Productos</h2>
-					<p>Conoce los simuladores que están siendo usados actualmente por nuestros clientes y los otro productos que ofrecemos</p>
+					<p><%= Information.first.text7 %></p>
 				</div><!--/.section-header-->
 				<div class="explore-content">
 					<div class="row">
@@ -248,33 +248,33 @@
 					<div class="col-md-3 col-sm-6">
 						<div class="single-ststistics-box">
 							<div class="statistics-content">
-								<div class="counter">90 </div> <span>K+</span>
+								<div class="counter">30 </div> <span>+</span>
 							</div><!--/.statistics-content-->
-							<h3>listings</h3>
+							<h3>clientes satisfechos</h3>
 						</div><!--/.single-ststistics-box-->
 					</div><!--/.col-->
 					<div class="col-md-3 col-sm-6">
 						<div class="single-ststistics-box">
 							<div class="statistics-content">
-								<div class="counter">40</div> <span>k+</span>
+								<div class="counter">3</div> <span>+</span>
 							</div><!--/.statistics-content-->
-							<h3>listing categories</h3>
+							<h3>años de experiencia</h3>
 						</div><!--/.single-ststistics-box-->
 					</div><!--/.col-->
 					<div class="col-md-3 col-sm-6">
 						<div class="single-ststistics-box">
 							<div class="statistics-content">
-								<div class="counter">65</div> <span>k+</span>
+								<div class="counter">300</div> <span>+</span>
 							</div><!--/.statistics-content-->
-							<h3>visitors</h3>
+							<h3>partes fabricadas a medida</h3>
 						</div><!--/.single-ststistics-box-->
 					</div><!--/.col-->
 					<div class="col-md-3 col-sm-6">
 						<div class="single-ststistics-box">
 							<div class="statistics-content">
-								<div class="counter">50</div> <span>k+</span>
+								<div class="counter">50</div> <span>+</span>
 							</div><!--/.statistics-content-->
-							<h3>happy clients</h3>
+							<h3>pilotos entrenados</h3>
 						</div><!--/.single-ststistics-box-->
 					</div><!--/.col-->
 				</div><!--/.statistics-counter-->	
@@ -295,14 +295,24 @@
 							<div class="col-md-4 col-sm-6">
 								<div class="single-blog-item">
 									<div class="single-blog-item-img">
-										<center><i class="fa-solid fa-user" style="font-size: 500%;"></i></center>
+										
 									</div>
 									<div class="single-blog-item-txt">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
+										<div class="row">
+											<div class="col-lg-1">
+												<i class="fa-solid fa-user"></i>
+											</div>
+											<div class="col-lg-8">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											</div>
+										</div>
+										
+										
+										
 										<p>
 											<%= review.description %>
 										</p>
@@ -350,7 +360,7 @@
 <script>
 function sendWhatsAppMessage() {
 	var message = document.getElementById('whatsapp-message').value;
-	var phone = "59177498233";
+	var phone = "591"+<%= Information.first.whatsapp_number %>;
 	var url = "https://wa.me/" + phone + "?text=Hola, OCWAviationSIMS. " + encodeURIComponent(message);
 
 	window.open(url, "_blank");

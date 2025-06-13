@@ -128,7 +128,7 @@ html,body{height: 100%;}
 .header-top-left li,.header-top-right li  {display: inline-block;}
 
 /*.select-opt*/
-.select-opt,.header-top-contact{
+.select-opt,.header-top-subscription{
     padding: 10px 18px;
     border-right: 1px solid #f6f8fa;
 }
@@ -358,7 +358,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: rgb(31, 134, 200);}
     background:#fff;
     border-radius: 3px;
     margin-right: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 2px;
     box-shadow: 0 0px 10px rgba(71,71,71,.2);
     -webkit-transition: .3s linear; 
     -moz-transition:.3s linear; 
@@ -382,8 +382,8 @@ nav.navbar.bootsnav .navbar-toggle i{color: rgb(31, 134, 200);}
 /*-------------------------------------
         6. Works 
 --------------------------------------*/
-.works{padding: 0 0 90px;}
-.works-content {margin-top: 73px;}
+.works{padding: 0 0 9px;}
+.works-content {margin-top: 7px;}
 
 .single-how-works{
     text-align: center;
@@ -719,8 +719,8 @@ nav.navbar.bootsnav .navbar-toggle i{color: rgb(31, 134, 200);}
 /*-------------------------------------
         10. Blog
 --------------------------------------*/
-.blog{padding:120px 0 90px;}
-.blog-content{margin-top: 80px;}
+.blog{padding:120px 0 9px;}
+.blog-content{margin-top: 8px;}
 
 .single-blog-item{
     margin-bottom: 30px;

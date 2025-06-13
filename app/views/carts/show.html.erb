@@ -52,7 +52,7 @@
         </div>
       </div>
 
-      <%= link_to "https://wa.me/59177498233?text=#{ERB::Util.url_encode(@items_string)}", target: "_blank", class: "cart-confirmation-btn" do %>
+      <%= link_to "https://wa.me/591"+ Information.first.whatsapp_number.to_s + "?text=#{ERB::Util.url_encode(@items_string)}", target: "_blank", class: "cart-confirmation-btn" do %>
         <i class="fab fa-whatsapp"></i> Confirmar pedido por WhatsApp
       <% end %>
       &nbsp;
@@ -187,7 +187,7 @@
 <script>
 function sendWhatsAppMessage() {
 	var message = document.getElementById('whatsapp-message').value;
-	var phone = "59177498233";
+	var phone = "591"+<%= Information.first.whatsapp_number %>;
 	var url = "https://wa.me/" + phone + "?text=Hola, OCWAviationSIMS. " + encodeURIComponent(message);
 
 	window.open(url, "_blank");

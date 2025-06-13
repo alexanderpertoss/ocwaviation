@@ -56,9 +56,8 @@
                           <li><%= link_to "Productos", products_path if authenticated? %></li>
                           <li><%= link_to "Categorías", categories_path if authenticated? %></li>
                           <li><%= link_to "Reseñas", reviews_path if authenticated? %></li>
+                          <li><%= link_to "Información", "/information/1/edit" if authenticated? %></li>
                           <li><%= button_to "Log out", session_path, method: :delete if authenticated? %></li>
-                          
-
                         <% else %>
                           <li class="scroll"><%= link_to "Inicio", "#home" %></li>
                           <li class="scroll"><%= link_to "¿Cómo funciona?", "#works" %></li>
@@ -68,6 +67,7 @@
                           <li><%= link_to "Productos", products_path if authenticated? %></li>
                           <li><%= link_to "Categorías", categories_path if authenticated? %></li>
                           <li><%= link_to "Reseñas", reviews_path if authenticated? %></li>
+                          <li><%= link_to "Información", "/information/1/edit" if authenticated? %></li>
                           <li><%= button_to "Cerrar Sesión", session_path, method: :delete if authenticated? %></li>
                         <% end %>
                       </ul><!--/.nav -->
@@ -98,8 +98,8 @@
 						</div>
 						<div class="col-sm-5">
 							<div class="footer-social">
-								<span style="font-size: 11px;"><i class="fa fa-phone"> +1  (222) 777 8888</i></span>
-								<a href="#"><i class="fa-brands fa-facebook"></i></a>	
+								<span style="font-size: 11px;"><i class="fa fa-phone"> +591 <%= Information.first.whatsapp_number %></i></span>
+								<a href="<%= Information.first.facebook_link %>" target="_blank"><i class="fa-brands fa-facebook"></i></a>	
 								
 							</div>
 						</div>
