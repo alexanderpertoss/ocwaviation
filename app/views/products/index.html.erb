@@ -14,6 +14,7 @@
           <th>Nombre</th>
           <th>Descripción</th>
           <th>Precio</th>
+          <th>Categoría</th>
           <th colspan="2">Acciones</th>
           <th>Imagenes</th>
         </tr>
@@ -23,6 +24,7 @@
             <td><%= product.name %></td>
             <td><%= product.description %></td>
             <td>Bs. <%= product.price %></td>
+            <td><%= product.category.name if product.category %></td>
             <td><%= link_to "Editar producto", edit_product_path(product), class: "btn btn-success" %></td>
             <td><%= button_to "Borrar el producto", product, method: :delete, class: "btn btn-danger" %></td>
             <td>

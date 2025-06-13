@@ -1,0 +1,29 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+  <% content_for :title, "Categories" %>
+
+  <h1>Categorías</h1>
+  <%= link_to "Nueva categoría", new_category_path, class: "btn btn-success" %>
+  <div id="reviews table-responsive">
+    <table class="table table-striped">
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th colspan="2">Acciones</th>
+      </tr>
+      
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= category.description %></td>
+          <td><%= link_to "Editar categoría", edit_category_path(category), class: "btn btn-success" %></td>
+          <td><%= button_to "Borrar categoría", category, method: :delete, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+      
+    </table>
+  </div>
+
+  
+</div>
