@@ -10,7 +10,7 @@
 			<div class="container">
 				<div class="welcome-hero-txt">
 					<h2>Los mejores simuladores de vuelo en Bolivia</h2>
-					
+					<p>Construimos tu simulador a medida, según tus requerimientos.</p>
 				</div>
 			</div>
 
@@ -71,8 +71,8 @@
 		<section id="works" class="works">
 			<div class="container">
 				<div class="section-header">
-					<h2>how it works</h2>
-					<p>Learn More about how our website works</p>
+					<h2>¿Cómo funciona?</h2>
+					<p>Somos una empresa que diseña y produce simuladores de vuelo a medida. Nos enfocamos en la excelencia y pesonalización, brindando un servicio único en el mercado boliviano.</p>
 				</div><!--/.section-header-->
 				<div class="works-content">
 					<div class="row">
@@ -130,67 +130,105 @@
 			<div class="container">
 				<div class="section-header">
 					<h2>Productos</h2>
-					<p>Conoce los simuladores que están siendo usados actualmente por nuestros clientes</p>
+					<p>Conoce los simuladores que están siendo usados actualmente por nuestros clientes y los otro productos que ofrecemos</p>
 				</div><!--/.section-header-->
 				<div class="explore-content">
 					<div class="row">
 
-						<% @products.each do |product| %>
-							<div class=" col-md-4 col-sm-6">
-								<div class="single-explore-item">
-									<div class="single-explore-img">
-										<div id="product-carousel-<%= product.id %>" class="carousel slide single-explore-img" data-ride="carousel">
-				
 
-											<!-- Wrapper for slides -->
-											<div class="carousel-inner">
-												<% product.images.each_with_index do |image, index| %>
-												<div class="item <%= 'active' if index == 0 %>">
-													<%= link_to url_for(image), class: "glightbox", data: { gallery: "product-#{product.id}" } do %>
-														<%= image_tag image, alt: "Product Image", class: "img-responsive" %>
-													<% end %>
+						<div class="container">
+							<!-- Nav tabs -->
+							
+								<ul class="nav nav-tabs" role="tablist" style="display: table; margin: 0 auto;">
+									<% Category.all.each_with_index do |category, index| %>
+										<% if !category.products.empty? %>
+											<li role="presentation" class="<%= 'active' if index == 0 %>">
+												<a href="#cat-<%= category.id %>" aria-controls="cat-<%= category.id %>" role="tab" data-toggle="tab">
+												<h4><%= category.name %></h4>
+												</a>
+											</li>
+										<% end %>
+									<% end %>
+								</ul>
+							
+							<br>
+							<!-- Tab panes -->
+							<div class="tab-content">
+								<% Category.all.each_with_index do |category, index| %>
+								<div role="tabpanel" class="tab-pane fade <%= 'in active' if index == 0 %>" id="cat-<%= category.id %>">
+									<div class="row">
+									<% category.products.each do |product| %>
+
+										<div class=" col-md-4 col-sm-6">
+										<div class="single-explore-item">
+											<div class="single-explore-img">
+												<div id="product-carousel-<%= product.id %>" class="carousel slide single-explore-img" data-ride="carousel">
+						
+
+													<!-- Wrapper for slides -->
+													<div class="carousel-inner">
+														<% product.images.each_with_index do |image, index| %>
+														<div class="item <%= 'active' if index == 0 %>">
+															<%= link_to url_for(image), class: "glightbox", data: { gallery: "product-#{product.id}" } do %>
+																<%= image_tag image, alt: "Product Image", class: "img-responsive" %>
+															<% end %>
+														</div>
+														<% end %>
+													</div>
+
+													<!-- Controls -->
+													<a class="left carousel-control" href="#product-carousel-<%= product.id %>" data-slide="prev">
+														<span class="fa-solid fa-arrow-left"></span>
+													</a>
+													<a class="right carousel-control" href="#product-carousel-<%= product.id %>" data-slide="next">
+														<span class="fa-solid fa-arrow-right"></span>
+													</a>
 												</div>
-												<% end %>
 											</div>
-
-											<!-- Controls -->
-											<a class="left carousel-control" href="#product-carousel-<%= product.id %>" data-slide="prev">
-												<span class="fa-solid fa-arrow-left"></span>
-											</a>
-											<a class="right carousel-control" href="#product-carousel-<%= product.id %>" data-slide="next">
-												<span class="fa-solid fa-arrow-right"></span>
-											</a>
-										</div>
-									</div>
-									<div class="single-explore-txt bg-theme-1">
-										<h2><a href="#"><%= product.name %></a></h2>
-										
-										<div class="explore-person">
-											<div class="row">
+											<div class="single-explore-txt bg-theme-1">
+												<h2><%= product.name %></h2>
 												
-												<div class="col-sm-12">
-													<p>
-														<%= product.description %> 
-													</p>
-													Bs. <%= product.price %>
+												<div class="explore-person">
+													<div class="row">
+														
+														<div class="col-sm-12">
+															<p>
+																<%= product.description %> 
+															</p>
+															Bs. <%= product.price %>
+														</div>
+													</div>
+												</div>
+												<div class="explore-open-close-part">
+													<div class="row">
+														<div class="col-sm-5">
+															<% if @cart.includes_product?(product) %>
+																<%= button_to "Agregado al carrito", cart_path, method: :get, class: "btn btn-success" %>
+															<% else %>
+																<%= button_to "Agregar a carrito", add_item_cart_path(product_id: product.id), method: :post, class: "btn btn-default" %>
+															<% end %>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
-										<div class="explore-open-close-part">
-											<div class="row">
-												<div class="col-sm-5">
-													<% if @cart.includes_product?(product) %>
-														<%= button_to "Agregado al carrito", cart_path, method: :get, class: "btn btn-success" %>
-													<% else %>
-														<%= button_to "Agregar a carrito", add_item_cart_path(product_id: product.id), method: :post, class: "btn btn-default" %>
-													<% end %>
-												</div>
-											</div>
-										</div>
+									</div>	
+
+
+
+
+
+
+
+										
+									<% end %>
 									</div>
 								</div>
-							</div>	
-						<% end %>
+								<% end %>
+							</div>
+						</div>
+
+				
 
 						
 					
@@ -323,6 +361,16 @@ document.addEventListener("DOMContentLoaded", function () {
       selector: '.glightbox'
     });
   });
+
+  
+  $(function() {
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      var $target = $($(e.target).attr("href"));
+      $('.tab-pane').not($target).hide();
+      $target.fadeIn(300);
+    });
+  });
+
 </script>
 
 		
