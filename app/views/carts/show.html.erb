@@ -100,7 +100,7 @@
 							<div class="tab-content">
 								<% Category.all.each_with_index do |category, index| %>
 								<div role="tabpanel" class="tab-pane fade <%= 'in active' if index == 0 %>" id="cat-<%= category.id %>">
-									<div class="row">
+									<div class="row equal-height">
 									<% category.products.each do |product| %>
 
 										<div class=" col-md-4 col-sm-6">
@@ -120,13 +120,15 @@
 														<% end %>
 													</div>
 
-													<!-- Controls -->
-													<a class="left carousel-control" href="#product-carousel-<%= product.id %>" data-slide="prev">
-														<span class="fa-solid fa-arrow-left"></span>
-													</a>
-													<a class="right carousel-control" href="#product-carousel-<%= product.id %>" data-slide="next">
-														<span class="fa-solid fa-arrow-right"></span>
-													</a>
+													<% if product.images.count > 1 %>
+														<!-- Controls -->
+														<a class="left carousel-control" href="#product-carousel-<%= product.id %>" data-slide="prev">
+															<span class="fa-solid fa-arrow-left"></span>
+														</a>
+														<a class="right carousel-control" href="#product-carousel-<%= product.id %>" data-slide="next">
+															<span class="fa-solid fa-arrow-right"></span>
+														</a>
+													<% end %>
 												</div>
 											</div>
 											<div class="single-explore-txt bg-theme-1">
